@@ -1,5 +1,6 @@
 [all:vars]
 GUID=9410
+ansible_os_family == 'RedHat'
 
 [internal:vars]
 
