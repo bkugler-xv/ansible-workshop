@@ -1,13 +1,9 @@
 ---
 # tasks file for common
-
-- name: configuration
-  gather_facts: false # remove later! speeds up testing
-  become: true
-
-  tasks:
-  - name: enable repos
+- name: enable repos
+    gather_facts: false # remove later! speeds up testing
+    become: true
     template:
-      src: ./open_three-tier-app.repo
-      dest: /etc/yum.repos.d/open_three-tier-app.repo
-      mode: 0644
+    src: ./open_three-tier-app.repo
+    dest: /etc/yum.repos.d/open_three-tier-app.repo
+    mode: 0644

@@ -2,11 +2,15 @@
 # Cleanup bad-ansible with Roles
 - name: Run common tasks
   hosts: all
+  gather_facts: false
+  become: true
   roles:
     - common
 
 - name: Run application server tasks
   hosts: apps
+  gather_facts: false
+  become: true
   roles:
     - tomcat
     - app
@@ -14,10 +18,14 @@
 
 - name: Run frontend tasks
   hosts: frontends
+  gather_facts: false
+  become: true
   roles:
     - haproxy
 
 - name: Run DB tasks
   hosts: appdbs
+  gather_facts: false
+  become: true
   roles:
     - postgres
