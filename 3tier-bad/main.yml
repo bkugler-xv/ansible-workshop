@@ -1,0 +1,26 @@
+#
+# Cleanup bad-ansible with Roles
+- name: Run common tasks
+  hosts: all
+  - import_role:
+      name: common
+
+- name: Run application server tasks
+  hosts: apps
+  tasks:
+  - import_role:
+      name: tomcat
+      name: app
+      name: apache
+
+- name: Run frontend tasks
+  hosts: frontends
+  tasks:
+  - import_role:
+      name: haproxy
+
+- name: Run DB tasks
+  hosts: appdbs
+  tasks:
+  - import_role:
+      name: postgres
