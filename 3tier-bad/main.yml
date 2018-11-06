@@ -13,8 +13,7 @@
   become: true
   roles:
     - tomcat
-    - app
-    - apache
+#    - apache
 
 - name: Run frontend tasks
   hosts: frontends
