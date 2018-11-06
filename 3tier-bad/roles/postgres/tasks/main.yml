@@ -1,16 +1,18 @@
 ---
 # tasks file for postgres
-- name: install progress
-  command: "yum install -y postgresql-server"
+# - name: install progress
+#   command: "yum install -y postgresql-server"
 
-#- name: install postgres
-#  yum:
-#    name: postgresql-server
-#    state: latest
-- name: enable apache at boot
+- name: install postgres
+  yum:
+    name: postgresql-server
+    state: latest
+
+- name: enable postgresql at boot
   service:
     name: postgresql
     enabled: yes
+
 - name: tell user to finish setting up postgres
   debug:
     msg: "Either uncomment the postgres setup or manually login and initialize"
@@ -20,6 +22,7 @@
 #    command: postgresql-setup initdb
 #  - name: initilize postgres some more
 #    command: chkconfig postgresql on
+
 - name: start postgres
   service:
     name: postgresql.service
